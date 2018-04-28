@@ -2,238 +2,281 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - csharp
+
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-
+  - <a href='https://github.com/lord/slate'>SDK下载地址</a>
 includes:
-  - errors
+
 
 search: true
 ---
 
-# Introduction
+# 简介
+感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# 渲染原理
+Ximmerse Slide-in AR双屏显示和传统VR类似。不用的是，AR的双屏画面会投射到头显的，由于镜片反射出来的图片会产生畸变。所以在Unity有两个摄像机专门负责生成RenderTexture，然后将生成的texture赋予到一个反畸变的mesh上。然后mesh上的图像再投射到曲面镜片后，这时人眼就可以看到正常的无畸变图像。
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+# 开发环境
 
-# Authentication
+# 视频教程 
+##Hello World: Marker Tracking
+[![IMAGE ALT TEXT](images/hello_world_marker_tracking.png)](http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1)
 
-> To authorize, use this code:
+# API文档
 
-```ruby
-require 'kittn'
+## XRInput
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
 
-```python
-import kittn
+## XDevicePlugin
+```csharp
+using System.Collections;
+using UnityEngine;
+using Ximmerse.InputSystem;
 
-api = kittn.authorize('meowmeowmeow')
-```
+public class Sample : MonoBehaviour {
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+    ControllerInput m_controllerInput;
 
-```javascript
-const kittn = require('kittn');
+	// Use this for initialization
+    IEnumerator Start() 
+    {
+        XDevicePlugin.Init();
+        XDevicePlugin.StartBLEScan();
+        m_controllerInput = new ControllerInput("XCobra-0");
 
-let api = kittn.authorize('meowmeowmeow');
-```
+        while(m_controllerInput.connectionState!= DeviceConnectionState.Connected)
+        {
+            yield return null;
+        }
 
-> Make sure to replace `meowmeowmeow` with your API key.
+        Debug.Log("Controller is connected!!");
+        XDevicePlugin.StopBLEScan();
+	}
+	
+	// Update is called once per frame
+	void Update () 
+    {
+        if(m_controllerInput.connectionState == DeviceConnectionState.Connected)
+        {
+            Debug.Log("Battery Level = " + m_controllerInput.batteryLevel);
+            if (m_controllerInput.GetButtonDown(XimmerseButton.Trigger))
+            {
+                Debug.Log("trigger hit!");
+            }
+        }
+	}
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+	private void OnApplicationPause(bool pause)
+	{
+        if (pause)
+            XDevicePlugin.OnPause();
+        else
+            XDevicePlugin.OnResume();
+	}
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+	private void OnApplicationQuit()
+	{
+        XDevicePlugin.Exit();
+	}
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> 这段Sample Code介绍了XDevice的基本用法。每一步都非常重要。请开发者注意代码中的细节。
+ 
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+该类是Unity与Native库的桥梁，含有大量的static函数。
+### XDevicePlugin.Init()
+Type | 解释
+--------- | ------- 
+int | 返回数值在>=0时，代表执行成功。初始化SDK。在调用任何SDK函数前，必须保证该函数已经调用，否则任何SDK中的函数都无法正常工作。
 
-### HTTP Request
+### XDevicePlugin.Exit()
+Type | 解释
+--------- | ------- 
+int | 返回数值在>=0时，代表执行成功。推荐在游戏关闭时调用，以此释放所有设备的连接。
 
-`GET http://example.com/kittens/<ID>`
+### XDevicePlugin.onPause()
+Type | 解释
+--------- | ------- 
+void | 必须在App进入background的时候调用。
 
-### URL Parameters
+### XDevicePlugin.onResume()
+Type | 解释
+--------- | ------- 
+void | 必须在App从background进入前台时调用。
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+### XDevicePlugin.GetInputDeviceHandle(string name)
+Type | 解释
+--------- | ------- 
+int | 通过设备名字来获取设备的handle。
 
-## Delete a Specific Kitten
+### XDevicePlugin.GetInputDeviceName(int which)
+Type | 解释
+--------- | ------- 
+string | 通过设备handle获取相应设备的设备名称。
 
-```ruby
-require 'kittn'
+### XDevicePlugin.SetMaxBleConnection(int num)
+Type | 解释
+--------- | ------- 
+void | 设置当前最大可连接的手柄数量。最多可以支持2个手柄同时连接。默认情况下，手柄的最大连接数量为1.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+### XDevicePlugin.GetMaxBleConnection()
+Type | 解释
+--------- | ------- 
+int | 获取当前设置的最大可连接手柄数量。
 
-```python
-import kittn
+### XDevicePlugin.StartBLEScan()
+Type | 解释
+--------- | ------- 
+void | 开启手机的scan功能，扫描周围手柄设备。注意：扫描开启后，必须同事按下touchpad下面的两个按键才可以连接成功。
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+### XDevicePlugin.StopBLEScan()
+Type | 解释
+--------- | ------- 
+void | 在手柄成功连接后，推荐使用该函数停止手机扫描功能。
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
+## ControllerInput
+```csharp
+using UnityEngine;
+using Ximmerse.InputSystem;
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
+public class Sample : MonoBehaviour {
 
-> The above command returns JSON structured like this:
+    ControllerInput m_controllerInput;
 
-```json
-{
-  "id": 2,
-  "deleted" : ":("
+	// Use this for initialization
+	void Start () {
+        XDevicePlugin.Init();
+        m_controllerInput = new ControllerInput("XCobra-0");
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        Debug.Log("Battery Level = " + m_controllerInput.batteryLevel);
+        if(m_controllerInput.GetButtonDown(XimmerseButton.Trigger))
+        {
+            Debug.Log("trigger hit!");
+        }
+	}
 }
+
 ```
+> 这个是推荐使用的Constructor。"XCobra-0"代表“左”手柄”（其实手柄部分左右，这里用“左”和“右”只是为了方便解释）。类似的，"XCobra-1"代表“右”手柄。
 
-This endpoint deletes a specific kitten.
+此类代表真实手柄。手柄当前的位置，手柄姿态（Rotation），手柄按键数，手柄电量，手柄连接状态等均由这个类提供。
 
-### HTTP Request
+### ControllerInput.type 
+Type | 解释
+--------- | ------- 
+ControllerType | ControllerInput的type。
 
-`DELETE http://example.com/kittens/<ID>`
+### ControllerInput.handle 
+Type | 解释
+--------- | ------- 
+int | ControllerInput的handle。该数据会被开发者频繁使用。
 
-### URL Parameters
+### ControllerInput.name 
+Type | 解释
+--------- | ------- 
+string | ControllerInput的名字。
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+### ControllerInput.trackingResult
+Type | 解释
+--------- | ------- 
+TrackingResult | 当前跟踪状态。
+
+### ControllerInput.positionTracked
+Type | 解释
+--------- | ------- 
+bool | 手柄位置是否被跟踪到。
+
+### ControllerInput.rotationTracked
+Type | 解释
+--------- | ------- 
+bool | 手柄的旋转姿态是否被跟踪到。
+
+### ControllerInput.connectionState
+Type | 解释
+--------- | ------- 
+DeviceConnectionState | 获取当前手柄的连接状态。
+
+### ControllerInput.batteryLevel
+Type | 解释
+--------- | ------- 
+int | 获取当前手柄的电量信息，数值区间为0-100。
+
+### ControllerInput.UpdateState（）
+Type | 解释
+--------- | ------- 
+void | 此函数已经被ControllerInput自行调用，无需开发者主动调用。这个函数的作用是从底层库中拉取最新的手柄状态。
+
+### ControllerInput.TouchpadToDpad（）
+Type | 解释
+--------- | ------- 
+void | 此函数将TouchPad的数据转化为DPad数据（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到DPad类型的数据。
+
+### ControllerInput.TouchpadToSwipe（）
+Type | 解释
+--------- | ------- 
+void | 此函数将TouchPad的数据转化为Swipe动作（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到Swipe类型的数据。
+
+### ControllerInput.GetAxis（int axisIndex）
+Type | 解释
+--------- | ------- 
+float | 此函数获取当前Touch Pad的位置信息。axisIndex=0时，获取Touch Pad的X/横向坐标。当axisIndex=1时，获取Touch Pad的Y/纵向坐标。当axisIndex=2时，获取Trigger的线性数据。注意：某些手柄不支持Trigger线性数据输出，所以输出的数据会成为0或1。
+
+### ControllerInput.GetButton（uint buttonMask）
+Type | 解释
+--------- | ------- 
+float | 此函数检测手柄当前按键状态。请使用`XimmerseButton`button mask。
+
+### ControllerInput.GetButtonDown（uint buttonMask）
+Type | 解释
+--------- | ------- 
+float | 此函数检测手柄当前按键和上一帧的对比，是否按下。请使用`XimmerseButton`button mask。
+
+### ControllerInput.GetButtonUp（uint buttonMask）
+Type | 解释
+--------- | ------- 
+float | 此函数检测手柄当前按键和上一帧的对比，是否松开。请使用`XimmerseButton`button mask。
+
+### ControllerInput.GetPosition（）
+Type | 解释
+--------- | ------- 
+Vector3 | 获取当前手柄相对于头显的位置，此位置为裸数据，不可以直接使用。
+
+### ControllerInput.GetRotation（）
+Type | 解释
+--------- | ------- 
+Quaternion | 获取当前手柄当前的旋转姿态，此位置为裸数据，不可以直接使用。
+
+### ControllerInput.GetRotation（）
+Type | 解释
+--------- | ------- 
+Vector3 | 获取当前手柄重力加速度计信息。
+
+### ControllerInput.GetGyroscope（）
+Type | 解释
+--------- | ------- 
+Vector3 | 获取当前手柄陀螺仪信息。注意：某些手柄不支持该功能，因此SDK只会输出0，0，0.
+
+### ControllerInput.GetState（）
+Type | 解释
+--------- | ------- 
+XDevicePlugin.ControllerState | 获取当前手柄的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。
+
+### ControllerInput.GetPrevState（）
+Type | 解释
+--------- | ------- 
+XDevicePlugin.ControllerState | 获取手柄上一帧的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。
+
+### ControllerInput.StartHaptics( int strength, int frequency, float duration = 0.0f ）
+Type | 解释
+--------- | ------- 
+void | 使手柄震动。strength：振动强度。frequency：振动频炉，目前只支持0。duration：震动时间长短。注意：某些手柄不支持该功能。
 
