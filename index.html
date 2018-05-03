@@ -226,6 +226,19 @@
           </li>
           <li>
             <a href="#0962b93fb6" class="toc-h1 toc-link" data-title="">开发环境</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#unity" class="toc-h2 toc-link" data-title="unity">Unity支持版本</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#33bc389d64" class="toc-h1 toc-link" data-title="">图文教程</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#demo" class="toc-h2 toc-link" data-title="demo">如何运行Demo</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#e8e941b2f4" class="toc-h1 toc-link" data-title="">视频教程</a>
@@ -233,13 +246,16 @@
                   <li>
                     <a href="#hello-world-marker-tracking" class="toc-h2 toc-link" data-title="hello-world-marker-tracking">Hello World: Marker Tracking</a>
                   </li>
+                  <li>
+                    <a href="#slideinsdk-prefab" class="toc-h2 toc-link" data-title="slideinsdk-prefab">如何设置SlideInSDK Prefab</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#api" class="toc-h1 toc-link" data-title="api">API文档</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#xrinput" class="toc-h2 toc-link" data-title="xrinput">XRInput</a>
+                    <a href="#xcobrainput" class="toc-h2 toc-link" data-title="xcobrainput">XCobraInput</a>
                   </li>
                   <li>
                     <a href="#xdeviceplugin" class="toc-h2 toc-link" data-title="xdeviceplugin">XDevicePlugin</a>
@@ -251,19 +267,185 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://github.com/lord/slate'>SDK下载地址</a></li>
+            <li><a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK下载地址</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='5ea2e0cde2'>简介</h1>
-<p>感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。</p>
+<p>感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。Marker本身可以提供位置和旋转信息，同时，也可以与Ximmerse Flip一起使用来实现更为灵活，强大的交互体验。</p>
 <h1 id='6d771aea9a'>渲染原理</h1>
 <p>Ximmerse Slide-in AR双屏显示和传统VR类似。不用的是，AR的双屏画面会投射到头显的，由于镜片反射出来的图片会产生畸变。所以在Unity有两个摄像机专门负责生成RenderTexture，然后将生成的texture赋予到一个反畸变的mesh上。然后mesh上的图像再投射到曲面镜片后，这时人眼就可以看到正常的无畸变图像。</p>
-<h1 id='0962b93fb6'>开发环境</h1><h1 id='e8e941b2f4'>视频教程</h1><h2 id='hello-world-marker-tracking'>Hello World: Marker Tracking</h2>
+<h1 id='0962b93fb6'>开发环境</h1><h2 id='unity'>Unity支持版本</h2>
+<p>2017.2.0</p>
+<h1 id='33bc389d64'>图文教程</h1><h2 id='demo'>如何运行Demo</h2>
+<p>SDK本身还有供给开发者参考的demo。本文将以MiniWorldAR Demo为例，给出如何使用说明。</p>
+
+<ol>
+<li><p>首先打开下图所示的Build Automator工具：
+<img style="float: right;" src="images/demo_run_automator0.png"></p></li>
+<li><p>将Current Preset修改为你想选择的demo。本文以miniworld为例：
+<img style="float: right;" src="images/demo_run_automator1.png"></p></li>
+<li><p>点选Load Preset：
+<img style="float: right;" src="images/demo_run_automator2.png"></p></li>
+<li><p>接下来会出现提示框说明Preset已经加载成功：
+<img style="float: right;" src="images/demo_run_automator3.png"></p></li>
+<li><p>选择Build按键即可生成APK：
+<img style="float: right;" src="images/demo_run_automator4.png"></p></li>
+<li><p>将APK安装入手机即可运行测试。</p></li>
+</ol>
+<h1 id='e8e941b2f4'>视频教程</h1><h2 id='hello-world-marker-tracking'>Hello World: Marker Tracking</h2>
 <p><a href="http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1"><img src="images/hello_world_marker_tracking.png" alt="IMAGE ALT TEXT" /></a></p>
-<h1 id='api'>API文档</h1><h2 id='xrinput'>XRInput</h2><h2 id='xdeviceplugin'>XDevicePlugin</h2><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<h2 id='slideinsdk-prefab'>如何设置SlideInSDK Prefab</h2>
+<p><a href="http://v.youku.com/v_show/id_XMzU3NzY2OTI0NA==.html?spm=a2h3j.8428770.3416059.1"><img src="images/slide_in_sdk_prefab_tutorial.png" alt="IMAGE ALT TEXT" /></a></p>
+<h1 id='api'>API文档</h1><h2 id='xcobrainput'>XCobraInput</h2>
+<p>XCobraInput本身是对ControllerInput的封装。目前只支持单个手柄（也就是做手柄或XCobra-0手柄）。</p>
+<h3 id='xcobrainput-initialize'>XCobraInput.Initialize()</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>void</td>
+<td>初始化SDK和硬件。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-headdeltarotationangle'>XCobraInput.HeadDeltaRotationAngle</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>float</td>
+<td>获取头部旋转delta角度（和上一帧比较）。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-hascontrollertriggerinput'>XCobraInput.HasControllerTriggerInput（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bool</td>
+<td>手柄trigger是否按下。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-hascontrollerrecenterinput'>XCobraInput.HasControllerRecenterInput（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bool</td>
+<td>回中按键是否按下。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-recentercontroller-float-yaw'>XCobraInput.RecenterController(float yaw)（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>void</td>
+<td>进行回中处理。通常可以用参数0.0f来使手柄和当前头部方向一致。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-getcontrollerrotation'>XCobraInput.GetControllerRotation（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Quaternion</td>
+<td>获取手柄旋转姿态（这是处理后的旋转姿态，可以直接使用）。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-getcontrollerrawrotation'>XCobraInput.GetControllerRawRotation（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Quaternion</td>
+<td>获取手柄旋转姿态（裸数据）。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-viberate-int-strength-float-time'>XCobraInput.Viberate(int strength, float time)</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>void</td>
+<td>使手柄震动。strength为强度，取值区间为0-100。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-iscontrollerbuttondown-ximmersebutton-btn'>XCobraInput.IsControllerButtonDown(XimmerseButton btn)</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bool</td>
+<td>判断XimmerseButton是否被按下（和上一帧对比）。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-iscontrollerbuttonup-ximmersebutton-btn'>XCobraInput.IsControllerButtonUp(XimmerseButton btn)</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bool</td>
+<td>判断XimmerseButton是否被松开（和上一帧对比）。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-iscontrollerbuttonpressed-ximmersebutton-btn'>XCobraInput.IsControllerButtonPressed(XimmerseButton btn)</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bool</td>
+<td>判断XimmerseButton当前是否被按下。</td>
+</tr>
+</tbody></table>
+<h3 id='xcobrainput-gettouchpadposition'>XCobraInput.GetTouchPadPosition（）</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>解释</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Vector2</td>
+<td>给出当前touch pad手指的位置。</td>
+</tr>
+</tbody></table>
+<h2 id='xdeviceplugin'>XDevicePlugin</h2><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Ximmerse.InputSystem</span><span class="p">;</span>
 
