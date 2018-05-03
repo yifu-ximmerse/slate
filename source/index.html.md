@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 
 toc_footers:
-  - <a href='https://github.com/lord/slate'>SDK下载地址</a>
+  - <a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK下载地址</a>
 includes:
 
 
@@ -14,22 +14,110 @@ search: true
 ---
 
 # 简介
-感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。
+感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。Marker本身可以提供位置和旋转信息，同时，也可以与Ximmerse Flip一起使用来实现更为灵活，强大的交互体验。
 
 
 # 渲染原理
 Ximmerse Slide-in AR双屏显示和传统VR类似。不用的是，AR的双屏画面会投射到头显的，由于镜片反射出来的图片会产生畸变。所以在Unity有两个摄像机专门负责生成RenderTexture，然后将生成的texture赋予到一个反畸变的mesh上。然后mesh上的图像再投射到曲面镜片后，这时人眼就可以看到正常的无畸变图像。
 
 # 开发环境
+## Unity支持版本
+2017.2.0
+
+# 图文教程
+## 如何运行Demo
+SDK本身还有供给开发者参考的demo。本文将以MiniWorldAR Demo为例，给出如何使用说明。
+
+1. 首先打开下图所示的Build Automator工具：
+<img style="float: right;" src="images/demo_run_automator0.png">
+
+2. 将Current Preset修改为你想选择的demo。本文以miniworld为例：
+<img style="float: right;" src="images/demo_run_automator1.png">
+
+3. 点选Load Preset：
+<img style="float: right;" src="images/demo_run_automator2.png">
+
+4. 接下来会出现提示框说明Preset已经加载成功：
+<img style="float: right;" src="images/demo_run_automator3.png">
+
+5. 选择Build按键即可生成APK：
+<img style="float: right;" src="images/demo_run_automator4.png">
+
+6. 将APK安装入手机即可运行测试。
+
 
 # 视频教程 
-##Hello World: Marker Tracking
+## Hello World: Marker Tracking
 [![IMAGE ALT TEXT](images/hello_world_marker_tracking.png)](http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1)
+
+## 如何设置SlideInSDK Prefab
+[![IMAGE ALT TEXT](images/slide_in_sdk_prefab_tutorial.png)](http://v.youku.com/v_show/id_XMzU3NzY2OTI0NA==.html?spm=a2h3j.8428770.3416059.1)
+
 
 # API文档
 
-## XRInput
+## XCobraInput
+XCobraInput本身是对ControllerInput的封装。目前只支持单个手柄（也就是做手柄或XCobra-0手柄）。
 
+### XCobraInput.Initialize()
+Type | 解释
+--------- | ------- 
+void | 初始化SDK和硬件。
+
+### XCobraInput.HeadDeltaRotationAngle
+Type | 解释
+--------- | ------- 
+float | 获取头部旋转delta角度（和上一帧比较）。
+
+### XCobraInput.HasControllerTriggerInput（）
+Type | 解释
+--------- | ------- 
+bool | 手柄trigger是否按下。
+
+### XCobraInput.HasControllerRecenterInput（）
+Type | 解释
+--------- | ------- 
+bool | 回中按键是否按下。
+
+### XCobraInput.RecenterController(float yaw)（）
+Type | 解释
+--------- | ------- 
+void | 进行回中处理。通常可以用参数0.0f来使手柄和当前头部方向一致。
+
+### XCobraInput.GetControllerRotation（）
+Type | 解释
+--------- | ------- 
+Quaternion | 获取手柄旋转姿态（这是处理后的旋转姿态，可以直接使用）。
+
+### XCobraInput.GetControllerRawRotation（）
+Type | 解释
+--------- | ------- 
+Quaternion | 获取手柄旋转姿态（裸数据）。
+
+### XCobraInput.Viberate(int strength, float time)
+Type | 解释
+--------- | ------- 
+void | 使手柄震动。strength为强度，取值区间为0-100。
+
+### XCobraInput.IsControllerButtonDown(XimmerseButton btn)
+Type | 解释
+--------- | ------- 
+bool | 判断XimmerseButton是否被按下（和上一帧对比）。
+
+### XCobraInput.IsControllerButtonUp(XimmerseButton btn)
+Type | 解释
+--------- | ------- 
+bool | 判断XimmerseButton是否被松开（和上一帧对比）。
+
+### XCobraInput.IsControllerButtonPressed(XimmerseButton btn)
+Type | 解释
+--------- | ------- 
+bool | 判断XimmerseButton当前是否被按下。
+
+### XCobraInput.GetTouchPadPosition（）
+Type | 解释
+--------- | ------- 
+Vector2 | 给出当前touch pad手指的位置。
 
 ## XDevicePlugin
 ```csharp
