@@ -219,40 +219,40 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#5ea2e0cde2" class="toc-h1 toc-link" data-title="">简介</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#6d771aea9a" class="toc-h1 toc-link" data-title="">渲染原理</a>
+            <a href="#headset-rendering" class="toc-h1 toc-link" data-title="headset-rendering">Headset Rendering</a>
           </li>
           <li>
-            <a href="#0962b93fb6" class="toc-h1 toc-link" data-title="">开发环境</a>
+            <a href="#development-environment" class="toc-h1 toc-link" data-title="development-environment">Development Environment</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#unity" class="toc-h2 toc-link" data-title="unity">Unity支持版本</a>
+                    <a href="#supported-unity-versions" class="toc-h2 toc-link" data-title="supported-unity-versions">Supported Unity Versions</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#33bc389d64" class="toc-h1 toc-link" data-title="">图文教程</a>
+            <a href="#tutorials" class="toc-h1 toc-link" data-title="tutorials">Tutorials</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#demo" class="toc-h2 toc-link" data-title="demo">如何运行Demo</a>
+                    <a href="#how-to-run-sdk-demo" class="toc-h2 toc-link" data-title="how-to-run-sdk-demo">How to Run SDK Demo</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#e8e941b2f4" class="toc-h1 toc-link" data-title="">视频教程</a>
+            <a href="#video-tutorial" class="toc-h1 toc-link" data-title="video-tutorial">Video Tutorial</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#hello-world-marker-tracking" class="toc-h2 toc-link" data-title="hello-world-marker-tracking">Hello World: Marker Tracking</a>
                   </li>
                   <li>
-                    <a href="#slideinsdk-prefab" class="toc-h2 toc-link" data-title="slideinsdk-prefab">如何设置SlideInSDK Prefab</a>
+                    <a href="#how-to-config-slideinsdk-prefab" class="toc-h2 toc-link" data-title="how-to-config-slideinsdk-prefab">How to Config SlideInSDK Prefab</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#api" class="toc-h1 toc-link" data-title="api">API文档</a>
+            <a href="#api-documentation" class="toc-h1 toc-link" data-title="api-documentation">API Documentation</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#xcobrainput" class="toc-h2 toc-link" data-title="xcobrainput">XCobraInput</a>
@@ -267,182 +267,184 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK下载地址</a></li>
+            <li><a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK Download Link</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='5ea2e0cde2'>简介</h1>
-<p>感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。Marker本身可以提供位置和旋转信息，同时，也可以与Ximmerse Flip一起使用来实现更为灵活，强大的交互体验。</p>
-<h1 id='6d771aea9a'>渲染原理</h1>
-<p>Ximmerse Slide-in AR双屏显示和传统VR类似。不用的是，AR的双屏画面会投射到头显的，由于镜片反射出来的图片会产生畸变。所以在Unity有两个摄像机专门负责生成RenderTexture，然后将生成的texture赋予到一个反畸变的mesh上。然后mesh上的图像再投射到曲面镜片后，这时人眼就可以看到正常的无畸变图像。</p>
-<h1 id='0962b93fb6'>开发环境</h1><h2 id='unity'>Unity支持版本</h2>
-<p>2017.2.0</p>
-<h1 id='33bc389d64'>图文教程</h1><h2 id='demo'>如何运行Demo</h2>
-<p>SDK本身还有供给开发者参考的demo。本文将以MiniWorldAR Demo为例，给出如何使用说明。</p>
+        <h1 id='introduction'>Introduction</h1>
+<p>Thanks for using Ximmerse Slide-in AR Headset. Ximmerse Slide-in AR Headset is designed with IR tracking technologies. The headset communicates with the phone with a USB cable. IR tracking marker can be used without any electronic; marker itself also provides position data and rotation data. Comibining marker and Ximmerse Flip controller is also possible via provided SDK, creating more complex and accurate interactions. </p>
+<h1 id='headset-rendering'>Headset Rendering</h1>
+<p>Ximmerse Slide-in AR Headset utilizes stereo rendering done on the phone, similar to the techniques used in VR, to create AR experience. The images rendered on the phone are reflected onto see through lenses, and the reflected images are what human eyes see. To combat image distortion created by lenses, Unity renders images on a distorted mesh, making the final images appear to human eyes un-distorted.</p>
+<h1 id='development-environment'>Development Environment</h1><h2 id='supported-unity-versions'>Supported Unity Versions</h2>
+<p>2017.3.0f1</p>
+
+<p>Other Unity versions may work, but they haven&#39;t been tested extensively by us. Please report any issue you may find to us. </p>
+<h1 id='tutorials'>Tutorials</h1><h2 id='how-to-run-sdk-demo'>How to Run SDK Demo</h2>
+<p>SDK comes with a few demos for developers to use as refferences. The following steps show how to create a demo APK. This tutorial uses MiniWorldAR Demo scene as an example, but other demos follows identical steps.</p>
 
 <ol>
-<li><p>首先打开下图所示的Build Automator工具：
+<li><p>Open Build Automator as shown below：
 <img style="float: right;" src="images/demo_run_automator0.png"></p></li>
-<li><p>将Current Preset修改为你想选择的demo。本文以miniworld为例：
+<li><p>Change Current Preset to your desired demo. This tutorial uses miniworld as an example：
 <img style="float: right;" src="images/demo_run_automator1.png"></p></li>
-<li><p>点选Load Preset：
+<li><p>Select Load Preset：
 <img style="float: right;" src="images/demo_run_automator2.png"></p></li>
-<li><p>接下来会出现提示框说明Preset已经加载成功：
+<li><p>A pop up dialog should show up to indictate settings are loaded：
 <img style="float: right;" src="images/demo_run_automator3.png"></p></li>
-<li><p>选择Build按键即可生成APK：
+<li><p>Hit Build button to create APK：
 <img style="float: right;" src="images/demo_run_automator4.png"></p></li>
-<li><p>将APK安装入手机即可运行测试。</p></li>
+<li><p>Install APK to Android phone.</p></li>
 </ol>
-<h1 id='e8e941b2f4'>视频教程</h1><h2 id='hello-world-marker-tracking'>Hello World: Marker Tracking</h2>
+<h1 id='video-tutorial'>Video Tutorial</h1><h2 id='hello-world-marker-tracking'>Hello World: Marker Tracking</h2>
 <p><a href="http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1"><img src="images/hello_world_marker_tracking.png" alt="IMAGE ALT TEXT" /></a></p>
-<h2 id='slideinsdk-prefab'>如何设置SlideInSDK Prefab</h2>
+<h2 id='how-to-config-slideinsdk-prefab'>How to Config SlideInSDK Prefab</h2>
 <p><a href="http://v.youku.com/v_show/id_XMzU3NzY2OTI0NA==.html?spm=a2h3j.8428770.3416059.1"><img src="images/slide_in_sdk_prefab_tutorial.png" alt="IMAGE ALT TEXT" /></a></p>
-<h1 id='api'>API文档</h1><h2 id='xcobrainput'>XCobraInput</h2>
-<p>XCobraInput本身是对ControllerInput的封装。目前只支持单个手柄（也就是做手柄或XCobra-0手柄）。</p>
+<h1 id='api-documentation'>API Documentation</h1><h2 id='xcobrainput'>XCobraInput</h2>
+<p>XCobraInput is a wapper for ControllerInput. Currently, XCobraInput only supports one controller(,which is left controller or the &quot;XCobra-0&quot; controller).</p>
 <h3 id='xcobrainput-initialize'>XCobraInput.Initialize()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>初始化SDK和硬件。</td>
+<td>Initialize SDK and hardware.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-headdeltarotationangle'>XCobraInput.HeadDeltaRotationAngle</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>float</td>
-<td>获取头部旋转delta角度（和上一帧比较）。</td>
+<td>Get delta head rotation(compared to last frame).</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-hascontrollertriggerinput'>XCobraInput.HasControllerTriggerInput（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>手柄trigger是否按下。</td>
+<td>Determine if trigger button is pressed.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-hascontrollerrecenterinput'>XCobraInput.HasControllerRecenterInput（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>回中按键是否按下。</td>
+<td>Determine if recenter button is pressed.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-recentercontroller-float-yaw'>XCobraInput.RecenterController(float yaw)（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>进行回中处理。通常可以用参数0.0f来使手柄和当前头部方向一致。</td>
+<td>Recenter the orientation of the controller. Use value 0.0f to set controller heading to headset heading.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-getcontrollerrotation'>XCobraInput.GetControllerRotation（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Quaternion</td>
-<td>获取手柄旋转姿态（这是处理后的旋转姿态，可以直接使用）。</td>
+<td>Get Rotation data from controller. This data is handled by SDK and can be applied to secene objects directly.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-getcontrollerrawrotation'>XCobraInput.GetControllerRawRotation（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Quaternion</td>
-<td>获取手柄旋转姿态（裸数据）。</td>
+<td>Get raw rotation data.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-viberate-int-strength-float-time'>XCobraInput.Viberate(int strength, float time)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>使手柄震动。strength为强度，取值区间为0-100。</td>
+<td>Vibrate the controller. The strength range is 0-100.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-iscontrollerbuttondown-ximmersebutton-btn'>XCobraInput.IsControllerButtonDown(XimmerseButton btn)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>判断XimmerseButton是否被按下（和上一帧对比）。</td>
+<td>Determine if a Ximmerse button is pressed (compared to last frame).</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-iscontrollerbuttonup-ximmersebutton-btn'>XCobraInput.IsControllerButtonUp(XimmerseButton btn)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>判断XimmerseButton是否被松开（和上一帧对比）。</td>
+<td>determine if a Ximmerse button is released (compared to last frame).</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-iscontrollerbuttonpressed-ximmersebutton-btn'>XCobraInput.IsControllerButtonPressed(XimmerseButton btn)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>判断XimmerseButton当前是否被按下。</td>
+<td>Determine if a Ximmerse button is being hold down at the moment.</td>
 </tr>
 </tbody></table>
 <h3 id='xcobrainput-gettouchpadposition'>XCobraInput.GetTouchPadPosition（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Vector2</td>
-<td>给出当前touch pad手指的位置。</td>
+<td>Provide finger position on touch pad.</td>
 </tr>
 </tbody></table>
 <h2 id='xdeviceplugin'>XDevicePlugin</h2><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
@@ -497,128 +499,128 @@
 <span class="p">}</span>
 </code></pre>
 <blockquote>
-<p>这段Sample Code介绍了XDevice的基本用法。每一步都非常重要。请开发者注意代码中的细节。</p>
+<p>This sample provids basic usage of XDevicePlugin. Please pay attention to all the details in the code.</p>
 </blockquote>
 
-<p>该类是Unity与Native库的桥梁，含有大量的static函数。</p>
+<p>This class acts as a bridge between Unity and Native libs, and it contains a lot of static functions.</p>
 <h3 id='xdeviceplugin-init'>XDevicePlugin.Init()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>返回数值在&gt;=0时，代表执行成功。初始化SDK。在调用任何SDK函数前，必须保证该函数已经调用，否则任何SDK中的函数都无法正常工作。</td>
+<td>When returning value is equal or larger than 0, it means the function is executed successfully. Init must be called before calling any other function in the SDK or the program won&#39;t function properly.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-exit'>XDevicePlugin.Exit()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>返回数值在&gt;=0时，代表执行成功。推荐在游戏关闭时调用，以此释放所有设备的连接。</td>
+<td>When returning value is equal or larger than 0, it means the function is executed successfully. This function shuts down SDK and disconnects all the devices.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-onpause'>XDevicePlugin.onPause()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>必须在App进入background的时候调用。</td>
+<td>Must be called upon backgrounding the application.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-onresume'>XDevicePlugin.onResume()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>必须在App从background进入前台时调用。</td>
+<td>Must be call when resuming the application.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-getinputdevicehandle-string-name'>XDevicePlugin.GetInputDeviceHandle(string name)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>通过设备名字来获取设备的handle。</td>
+<td>Get Device handle with a device. Supported values are &quot;XCobra-0&quot;, &quot;XCobra-1&quot;.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-getinputdevicename-int-which'>XDevicePlugin.GetInputDeviceName(int which)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>string</td>
-<td>通过设备handle获取相应设备的设备名称。</td>
+<td>Get device name with a handle.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-setmaxbleconnection-int-num'>XDevicePlugin.SetMaxBleConnection(int num)</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>设置当前最大可连接的手柄数量。最多可以支持2个手柄同时连接。默认情况下，手柄的最大连接数量为1.</td>
+<td>Set max number of controllers that can be connected. 2 is the maximum number; by default, max number of controllers is 1.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-getmaxbleconnection'>XDevicePlugin.GetMaxBleConnection()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>获取当前设置的最大可连接手柄数量。</td>
+<td>Get current max number of controllers.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-startblescan'>XDevicePlugin.StartBLEScan()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>开启手机的scan功能，扫描周围手柄设备。注意：扫描开启后，必须同事按下touchpad下面的两个按键才可以连接成功。</td>
+<td>Start bluetooth scanning function on the phone. During scaning mode, users must press both button on right below touch pad to have the controller paired.</td>
 </tr>
 </tbody></table>
 <h3 id='xdeviceplugin-stopblescan'>XDevicePlugin.StopBLEScan()</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>在手柄成功连接后，推荐使用该函数停止手机扫描功能。</td>
+<td>When controller is paired, it is recommended to call this function to have the phone stop scanning.</td>
 </tr>
 </tbody></table>
 <h2 id='controllerinput'>ControllerInput</h2><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
@@ -646,272 +648,272 @@
 
 </code></pre>
 <blockquote>
-<p>这个是推荐使用的Constructor。&quot;XCobra-0&quot;代表“左”手柄”（其实手柄部分左右，这里用“左”和“右”只是为了方便解释）。类似的，&quot;XCobra-1&quot;代表“右”手柄。</p>
+<p>The constructor shown in the sample code is recommended constructor. &quot;XCobra-0&quot; stands for &quot;Left&quot; controller. Similarly, &quot;XCobra-1&quot; stands for &quot;Right&quot; controller. The controllers don&#39;t have be left or right controllers. The left and right concepts are used here to descible the usage easily. </p>
 </blockquote>
 
-<p>此类代表真实手柄。手柄当前的位置，手柄姿态（Rotation），手柄按键数，手柄电量，手柄连接状态等均由这个类提供。</p>
+<p>This class represents real physical controller. Controller connection status, rotation or button states can all be accessed from this class. </p>
 <h3 id='controllerinput-type'>ControllerInput.type</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>ControllerType</td>
-<td>ControllerInput的type。</td>
+<td>ControllerInput type.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-handle'>ControllerInput.handle</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>ControllerInput的handle。该数据会被开发者频繁使用。</td>
+<td>ControllerInput handle. This handle will be used very frequently by developers.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-name'>ControllerInput.name</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>string</td>
-<td>ControllerInput的名字。</td>
+<td>ControllerInput name.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-trackingresult'>ControllerInput.trackingResult</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>TrackingResult</td>
-<td>当前跟踪状态。</td>
+<td>Tracking status.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-positiontracked'>ControllerInput.positionTracked</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>手柄位置是否被跟踪到。</td>
+<td>Check if controller position is being tracked.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-rotationtracked'>ControllerInput.rotationTracked</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>bool</td>
-<td>手柄的旋转姿态是否被跟踪到。</td>
+<td>Check if controller orientation is being tracked.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-connectionstate'>ControllerInput.connectionState</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>DeviceConnectionState</td>
-<td>获取当前手柄的连接状态。</td>
+<td>Check controller connection state.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-batterylevel'>ControllerInput.batteryLevel</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>int</td>
-<td>获取当前手柄的电量信息，数值区间为0-100。</td>
+<td>Get battery level. Range is from 0-100.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-updatestate'>ControllerInput.UpdateState（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>此函数已经被ControllerInput自行调用，无需开发者主动调用。这个函数的作用是从底层库中拉取最新的手柄状态。</td>
+<td>This function is called by SDK itself. Developers don&#39;t have to use this function. This function pulls data from native libs.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-touchpadtodpad'>ControllerInput.TouchpadToDpad（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>此函数将TouchPad的数据转化为DPad数据（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到DPad类型的数据。</td>
+<td>This function converts touch pad data to DPad data, while perserving the original touch pad data. After calling this function, developers can have access to DPad data.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-touchpadtoswipe'>ControllerInput.TouchpadToSwipe（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>此函数将TouchPad的数据转化为Swipe动作（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到Swipe类型的数据。</td>
+<td>This function converts touch pad data to Swipe actions, while perserving the original touch pad data. After calling this function, developers can have access to swipe action data.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getaxis-int-axisindex'>ControllerInput.GetAxis（int axisIndex）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>float</td>
-<td>此函数获取当前Touch Pad的位置信息。axisIndex=0时，获取Touch Pad的X/横向坐标。当axisIndex=1时，获取Touch Pad的Y/纵向坐标。当axisIndex=2时，获取Trigger的线性数据。注意：某些手柄不支持Trigger线性数据输出，所以输出的数据会成为0或1。</td>
+<td>Get touch pad data and trigger data. When axisIndex=0，it returns touch pad X axis value.When axisIndex=1，it returns touch pad Y axis value. When axisIndex=2, it returns trigger value. The value is either 0 or 1.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getbutton-uint-buttonmask'>ControllerInput.GetButton（uint buttonMask）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>float</td>
-<td>此函数检测手柄当前按键状态。请使用<code>XimmerseButton</code>button mask。</td>
+<td>Determine button state on controller. Please use <code>XimmerseButton</code> button mask.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getbuttondown-uint-buttonmask'>ControllerInput.GetButtonDown（uint buttonMask）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>float</td>
-<td>此函数检测手柄当前按键和上一帧的对比，是否按下。请使用<code>XimmerseButton</code>button mask。</td>
+<td>Determine if button was pressed compared to last frame. Please use <code>XimmerseButton</code> button mask.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getbuttonup-uint-buttonmask'>ControllerInput.GetButtonUp（uint buttonMask）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>float</td>
-<td>此函数检测手柄当前按键和上一帧的对比，是否松开。请使用<code>XimmerseButton</code>button mask。</td>
+<td>Determine if button was released compared to last frame. Please use <code>XimmerseButton</code> button mask.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getposition'>ControllerInput.GetPosition（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Vector3</td>
-<td>获取当前手柄相对于头显的位置，此位置为裸数据，不可以直接使用。</td>
+<td>Get current position of controller relative to headset. This is raw data and can&#39;t be used directly.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getrotation'>ControllerInput.GetRotation（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Quaternion</td>
-<td>获取当前手柄当前的旋转姿态，此位置为裸数据，不可以直接使用。</td>
+<td>Get current rotation of controller relative to headset. This is raw data and can&#39;t be used directly.</td>
 </tr>
 </tbody></table>
-<h3 id='controllerinput-getrotation-2'>ControllerInput.GetRotation（）</h3>
+<h3 id='controllerinput-getaccelerometor'>ControllerInput.GetAccelerometor（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Vector3</td>
-<td>获取当前手柄重力加速度计信息。</td>
+<td>Get accelerometor data.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getgyroscope'>ControllerInput.GetGyroscope（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Vector3</td>
-<td>获取当前手柄陀螺仪信息。注意：某些手柄不支持该功能，因此SDK只会输出0，0，0.</td>
+<td>Get gyroscope data. Some controller models may not support this feature, so the SDK would return 0,0,0.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getstate'>ControllerInput.GetState（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>XDevicePlugin.ControllerState</td>
-<td>获取当前手柄的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。</td>
+<td>Get controller state. This is handled by SDK automatically. Developers don&#39;t have to interact with this function.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-getprevstate'>ControllerInput.GetPrevState（）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>XDevicePlugin.ControllerState</td>
-<td>获取手柄上一帧的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。</td>
+<td>Get controller last frame state. This is handled by SDK automatically. Developers don&#39;t have to interact with this function.</td>
 </tr>
 </tbody></table>
 <h3 id='controllerinput-starthaptics-int-strength-int-frequency-float-duration-0-0f'>ControllerInput.StartHaptics( int strength, int frequency, float duration = 0.0f ）</h3>
 <table><thead>
 <tr>
 <th>Type</th>
-<th>解释</th>
+<th>Function</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>void</td>
-<td>使手柄震动。strength：振动强度。frequency：振动频炉，目前只支持0。duration：震动时间长短。注意：某些手柄不支持该功能。</td>
+<td>Vibrate the controller. strength：vibrate strengh, ranging 0-100.frequency：only value 0 is supported at the moment. duration：vibration duration. Please note that some controller models may not support this feature.</td>
 </tr>
 </tbody></table>
 
