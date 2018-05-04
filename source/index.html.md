@@ -26,6 +26,13 @@ Ximmerse Slide-in AR Headset utilizes stereo rendering done on the phone, simila
 
 Other Unity versions may work, but they haven't been tested extensively by us. Please report any issue you may find to us. 
 
+## Supported Deployment Platforms
+Android 6.0 or above.
+
+## Supported Development Platforms
+Mac OS X is supported.
+Windows 10 should work, but it hasn't been tested extensively. Please report any issue you find on Windows 10.
+
 # Tutorials
 ## How to Run SDK Demo
 SDK comes with a few demos for developers to use as refferences. The following steps show how to create a demo APK. This tutorial uses MiniWorldAR Demo scene as an example, but other demos follows identical steps.
