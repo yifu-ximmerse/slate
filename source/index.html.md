@@ -6,118 +6,120 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 
 toc_footers:
-  - <a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK下载地址</a>
+  - <a href='https://gitee.com/XIMMERSE-SZ/XimmerseSDK'>SDK Download Link</a>
 includes:
 
 
 search: true
 ---
 
-# 简介
-感谢您使用Ximmerse Slide-in AR头显。Ximmerse Slide-in AR头显的跟踪技术基于IR（红外射线）Marker跟踪技术。头显本身依靠手机的USB供电；IR Marker则不需要任何供电。Marker本身可以提供位置和旋转信息，同时，也可以与Ximmerse Flip一起使用来实现更为灵活，强大的交互体验。
+# Introduction
+Thanks for using Ximmerse Slide-in AR Headset. Ximmerse Slide-in AR Headset is designed with IR tracking technologies. The headset communicates with the phone with a USB cable. IR tracking marker can be used without any electronic; marker itself also provides position data and rotation data. Comibining marker and Ximmerse Flip controller is also possible via provided SDK, creating more complex and accurate interactions. 
 
 
-# 渲染原理
-Ximmerse Slide-in AR双屏显示和传统VR类似。不用的是，AR的双屏画面会投射到头显的，由于镜片反射出来的图片会产生畸变。所以在Unity有两个摄像机专门负责生成RenderTexture，然后将生成的texture赋予到一个反畸变的mesh上。然后mesh上的图像再投射到曲面镜片后，这时人眼就可以看到正常的无畸变图像。
+# Headset Rendering
+Ximmerse Slide-in AR Headset utilizes stereo rendering done on the phone, similar to the techniques used in VR, to create AR experience. The images rendered on the phone are reflected onto see through lenses, and the reflected images are what human eyes see. To combat image distortion created by lenses, Unity renders images on a distorted mesh, making the final images appear to human eyes un-distorted.
 
-# 开发环境
-## Unity支持版本
-2017.2.0
+# Development Environment
+## Supported Unity Versions
+2017.3.0f1
 
-# 图文教程
-## 如何运行Demo
-SDK本身还有供给开发者参考的demo。本文将以MiniWorldAR Demo为例，给出如何使用说明。
+Other Unity versions may work, but they haven't been tested extensively by us. Please report any issue you may find to us. 
 
-1. 首先打开下图所示的Build Automator工具：
+# Tutorials
+## How to Run SDK Demo
+SDK comes with a few demos for developers to use as refferences. The following steps show how to create a demo APK. This tutorial uses MiniWorldAR Demo scene as an example, but other demos follows identical steps.
+
+1. Open Build Automator as shown below：
 <img style="float: right;" src="images/demo_run_automator0.png">
 
-2. 将Current Preset修改为你想选择的demo。本文以miniworld为例：
+2. Change Current Preset to your desired demo. This tutorial uses miniworld as an example：
 <img style="float: right;" src="images/demo_run_automator1.png">
 
-3. 点选Load Preset：
+3. Select Load Preset：
 <img style="float: right;" src="images/demo_run_automator2.png">
 
-4. 接下来会出现提示框说明Preset已经加载成功：
+4. A pop up dialog should show up to indictate settings are loaded：
 <img style="float: right;" src="images/demo_run_automator3.png">
 
-5. 选择Build按键即可生成APK：
+5. Hit Build button to create APK：
 <img style="float: right;" src="images/demo_run_automator4.png">
 
-6. 将APK安装入手机即可运行测试。
+6. Install APK to Android phone.
 
 
-# 视频教程 
+# Video Tutorial 
 ## Hello World: Marker Tracking
 [![IMAGE ALT TEXT](images/hello_world_marker_tracking.png)](http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1)
 
-## 如何设置SlideInSDK Prefab
+## How to Config SlideInSDK Prefab
 [![IMAGE ALT TEXT](images/slide_in_sdk_prefab_tutorial.png)](http://v.youku.com/v_show/id_XMzU3NzY2OTI0NA==.html?spm=a2h3j.8428770.3416059.1)
 
 
-# API文档
+# API Documentation
 
 ## XCobraInput
-XCobraInput本身是对ControllerInput的封装。目前只支持单个手柄（也就是做手柄或XCobra-0手柄）。
+XCobraInput is a wapper for ControllerInput. Currently, XCobraInput only supports one controller(,which is left controller or the "XCobra-0" controller).
 
 ### XCobraInput.Initialize()
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 初始化SDK和硬件。
+void | Initialize SDK and hardware.
 
 ### XCobraInput.HeadDeltaRotationAngle
-Type | 解释
+Type | Function
 --------- | ------- 
-float | 获取头部旋转delta角度（和上一帧比较）。
+float | Get delta head rotation(compared to last frame).
 
 ### XCobraInput.HasControllerTriggerInput（）
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 手柄trigger是否按下。
+bool | Determine if trigger button is pressed.
 
 ### XCobraInput.HasControllerRecenterInput（）
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 回中按键是否按下。
+bool | Determine if recenter button is pressed.
 
 ### XCobraInput.RecenterController(float yaw)（）
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 进行回中处理。通常可以用参数0.0f来使手柄和当前头部方向一致。
+void | Recenter the orientation of the controller. Use value 0.0f to set controller heading to headset heading.
 
 ### XCobraInput.GetControllerRotation（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Quaternion | 获取手柄旋转姿态（这是处理后的旋转姿态，可以直接使用）。
+Quaternion | Get Rotation data from controller. This data is handled by SDK and can be applied to secene objects directly.
 
 ### XCobraInput.GetControllerRawRotation（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Quaternion | 获取手柄旋转姿态（裸数据）。
+Quaternion | Get raw rotation data.
 
 ### XCobraInput.Viberate(int strength, float time)
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 使手柄震动。strength为强度，取值区间为0-100。
+void | Vibrate the controller. The strength range is 0-100.
 
 ### XCobraInput.IsControllerButtonDown(XimmerseButton btn)
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 判断XimmerseButton是否被按下（和上一帧对比）。
+bool | Determine if a Ximmerse button is pressed (compared to last frame).
 
 ### XCobraInput.IsControllerButtonUp(XimmerseButton btn)
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 判断XimmerseButton是否被松开（和上一帧对比）。
+bool | determine if a Ximmerse button is released (compared to last frame).
 
 ### XCobraInput.IsControllerButtonPressed(XimmerseButton btn)
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 判断XimmerseButton当前是否被按下。
+bool | Determine if a Ximmerse button is being hold down at the moment.
 
 ### XCobraInput.GetTouchPadPosition（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Vector2 | 给出当前touch pad手指的位置。
+Vector2 | Provide finger position on touch pad.
 
 ## XDevicePlugin
 ```csharp
@@ -173,60 +175,59 @@ public class Sample : MonoBehaviour {
 }
 ```
 
-> 这段Sample Code介绍了XDevice的基本用法。每一步都非常重要。请开发者注意代码中的细节。
+> This sample provids basic usage of XDevicePlugin. Please pay attention to all the details in the code.
  
 
-该类是Unity与Native库的桥梁，含有大量的static函数。
+This class acts as a bridge between Unity and Native libs, and it contains a lot of static functions.
 ### XDevicePlugin.Init()
-Type | 解释
+Type | Function
 --------- | ------- 
-int | 返回数值在>=0时，代表执行成功。初始化SDK。在调用任何SDK函数前，必须保证该函数已经调用，否则任何SDK中的函数都无法正常工作。
+int | When returning value is equal or larger than 0, it means the function is executed successfully. Init must be called before calling any other function in the SDK or the program won't function properly. 
 
 ### XDevicePlugin.Exit()
-Type | 解释
+Type | Function
 --------- | ------- 
-int | 返回数值在>=0时，代表执行成功。推荐在游戏关闭时调用，以此释放所有设备的连接。
+int | When returning value is equal or larger than 0, it means the function is executed successfully. This function shuts down SDK and disconnects all the devices.
 
 ### XDevicePlugin.onPause()
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 必须在App进入background的时候调用。
+void | Must be called upon backgrounding the application.
 
 ### XDevicePlugin.onResume()
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 必须在App从background进入前台时调用。
+void | Must be call when resuming the application.
 
 ### XDevicePlugin.GetInputDeviceHandle(string name)
-Type | 解释
+Type | Function
 --------- | ------- 
-int | 通过设备名字来获取设备的handle。
+int | Get Device handle with a device. Supported values are "XCobra-0", "XCobra-1".
 
 ### XDevicePlugin.GetInputDeviceName(int which)
-Type | 解释
+Type | Function
 --------- | ------- 
-string | 通过设备handle获取相应设备的设备名称。
+string | Get device name with a handle.
 
 ### XDevicePlugin.SetMaxBleConnection(int num)
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 设置当前最大可连接的手柄数量。最多可以支持2个手柄同时连接。默认情况下，手柄的最大连接数量为1.
+void | Set max number of controllers that can be connected. 2 is the maximum number; by default, max number of controllers is 1.
 
 ### XDevicePlugin.GetMaxBleConnection()
-Type | 解释
+Type | Function
 --------- | ------- 
-int | 获取当前设置的最大可连接手柄数量。
+int | Get current max number of controllers.
 
 ### XDevicePlugin.StartBLEScan()
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 开启手机的scan功能，扫描周围手柄设备。注意：扫描开启后，必须同事按下touchpad下面的两个按键才可以连接成功。
+void | Start bluetooth scanning function on the phone. During scaning mode, users must press both button on right below touch pad to have the controller paired.
 
 ### XDevicePlugin.StopBLEScan()
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 在手柄成功连接后，推荐使用该函数停止手机扫描功能。
-
+void | When controller is paired, it is recommended to call this function to have the phone stop scanning.
 
 ## ControllerInput
 ```csharp
@@ -254,117 +255,118 @@ public class Sample : MonoBehaviour {
 }
 
 ```
-> 这个是推荐使用的Constructor。"XCobra-0"代表“左”手柄”（其实手柄部分左右，这里用“左”和“右”只是为了方便解释）。类似的，"XCobra-1"代表“右”手柄。
+> The constructor shown in the sample code is recommended constructor. "XCobra-0" stands for "Left" controller. Similarly, "XCobra-1" stands for "Right" controller. The controllers don't have be left or right controllers. The left and right concepts are used here to descible the usage easily. 
 
-此类代表真实手柄。手柄当前的位置，手柄姿态（Rotation），手柄按键数，手柄电量，手柄连接状态等均由这个类提供。
+
+This class represents real physical controller. Controller connection status, rotation or button states can all be accessed from this class. 
 
 ### ControllerInput.type 
-Type | 解释
+Type | Function
 --------- | ------- 
-ControllerType | ControllerInput的type。
+ControllerType | ControllerInput type. 
 
 ### ControllerInput.handle 
-Type | 解释
+Type | Function
 --------- | ------- 
-int | ControllerInput的handle。该数据会被开发者频繁使用。
+int | ControllerInput handle. This handle will be used very frequently by developers.
 
 ### ControllerInput.name 
-Type | 解释
+Type | Function
 --------- | ------- 
-string | ControllerInput的名字。
+string | ControllerInput name.
 
 ### ControllerInput.trackingResult
-Type | 解释
+Type | Function
 --------- | ------- 
-TrackingResult | 当前跟踪状态。
+TrackingResult | Tracking status.
 
 ### ControllerInput.positionTracked
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 手柄位置是否被跟踪到。
+bool | Check if controller position is being tracked.
 
 ### ControllerInput.rotationTracked
-Type | 解释
+Type | Function
 --------- | ------- 
-bool | 手柄的旋转姿态是否被跟踪到。
+bool | Check if controller orientation is being tracked. 
 
 ### ControllerInput.connectionState
-Type | 解释
+Type | Function
 --------- | ------- 
-DeviceConnectionState | 获取当前手柄的连接状态。
+DeviceConnectionState | Check controller connection state. 
 
 ### ControllerInput.batteryLevel
-Type | 解释
+Type | Function
 --------- | ------- 
-int | 获取当前手柄的电量信息，数值区间为0-100。
+int | Get battery level. Range is from 0-100.
 
 ### ControllerInput.UpdateState（）
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 此函数已经被ControllerInput自行调用，无需开发者主动调用。这个函数的作用是从底层库中拉取最新的手柄状态。
+void | This function is called by SDK itself. Developers don't have to use this function. This function pulls data from native libs.
 
 ### ControllerInput.TouchpadToDpad（）
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 此函数将TouchPad的数据转化为DPad数据（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到DPad类型的数据。
+void | This function converts touch pad data to DPad data, while perserving the original touch pad data. After calling this function, developers can have access to DPad data.
 
 ### ControllerInput.TouchpadToSwipe（）
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 此函数将TouchPad的数据转化为Swipe动作（但是仍保留原TouchPad数据）。在调用该函数后，开发者可以收到Swipe类型的数据。
+void | This function converts touch pad data to Swipe actions, while perserving the original touch pad data. After calling this function, developers can have access to swipe action data.
 
 ### ControllerInput.GetAxis（int axisIndex）
-Type | 解释
+Type | Function
 --------- | ------- 
-float | 此函数获取当前Touch Pad的位置信息。axisIndex=0时，获取Touch Pad的X/横向坐标。当axisIndex=1时，获取Touch Pad的Y/纵向坐标。当axisIndex=2时，获取Trigger的线性数据。注意：某些手柄不支持Trigger线性数据输出，所以输出的数据会成为0或1。
+float | Get touch pad data and trigger data. When axisIndex=0，it returns touch pad X axis value.When axisIndex=1，it returns touch pad Y axis value. When axisIndex=2, it returns trigger value. The value is either 0 or 1.
 
 ### ControllerInput.GetButton（uint buttonMask）
-Type | 解释
+Type | Function
 --------- | ------- 
-float | 此函数检测手柄当前按键状态。请使用`XimmerseButton`button mask。
+float | Determine button state on controller. Please use `XimmerseButton` button mask.
 
 ### ControllerInput.GetButtonDown（uint buttonMask）
-Type | 解释
+Type | Function
 --------- | ------- 
-float | 此函数检测手柄当前按键和上一帧的对比，是否按下。请使用`XimmerseButton`button mask。
+float | Determine if button was pressed compared to last frame. Please use `XimmerseButton` button mask.
 
 ### ControllerInput.GetButtonUp（uint buttonMask）
-Type | 解释
+Type | Function
 --------- | ------- 
-float | 此函数检测手柄当前按键和上一帧的对比，是否松开。请使用`XimmerseButton`button mask。
+float | Determine if button was released compared to last frame. Please use `XimmerseButton` button mask.
 
 ### ControllerInput.GetPosition（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Vector3 | 获取当前手柄相对于头显的位置，此位置为裸数据，不可以直接使用。
+Vector3 | Get current position of controller relative to headset. This is raw data and can't be used directly.
 
 ### ControllerInput.GetRotation（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Quaternion | 获取当前手柄当前的旋转姿态，此位置为裸数据，不可以直接使用。
+Quaternion | Get current rotation of controller relative to headset. This is raw data and can't be used directly.
 
-### ControllerInput.GetRotation（）
-Type | 解释
+### ControllerInput.GetAccelerometor（）
+Type | Function
 --------- | ------- 
-Vector3 | 获取当前手柄重力加速度计信息。
+Vector3 | Get accelerometor data.
 
 ### ControllerInput.GetGyroscope（）
-Type | 解释
+Type | Function
 --------- | ------- 
-Vector3 | 获取当前手柄陀螺仪信息。注意：某些手柄不支持该功能，因此SDK只会输出0，0，0.
+Vector3 | Get gyroscope data. Some controller models may not support this feature, so the SDK would return 0,0,0.
 
 ### ControllerInput.GetState（）
-Type | 解释
+Type | Function
 --------- | ------- 
-XDevicePlugin.ControllerState | 获取当前手柄的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。
+XDevicePlugin.ControllerState | Get controller state. This is handled by SDK automatically. Developers don't have to interact with this function.
 
 ### ControllerInput.GetPrevState（）
-Type | 解释
+Type | Function
 --------- | ------- 
-XDevicePlugin.ControllerState | 获取手柄上一帧的State。这个State会被ControllerInput自行使用。开发者通常无需处理这个State。
+XDevicePlugin.ControllerState | Get controller last frame state. This is handled by SDK automatically. Developers don't have to interact with this function.
 
 ### ControllerInput.StartHaptics( int strength, int frequency, float duration = 0.0f ）
-Type | 解释
+Type | Function
 --------- | ------- 
-void | 使手柄震动。strength：振动强度。frequency：振动频炉，目前只支持0。duration：震动时间长短。注意：某些手柄不支持该功能。
+void | Vibrate the controller. strength：vibrate strengh, ranging 0-100.frequency：only value 0 is supported at the moment. duration：vibration duration. Please note that some controller models may not support this feature.
 
