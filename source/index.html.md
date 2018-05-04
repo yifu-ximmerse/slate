@@ -21,15 +21,15 @@ Thanks for using Ximmerse Slide-in AR Headset. Ximmerse Slide-in AR Headset is d
 Ximmerse Slide-in AR Headset utilizes stereo rendering done on the phone, similar to the techniques used in VR, to create AR experience. The images rendered on the phone are reflected onto see through lenses, and the reflected images are what human eyes see. To combat image distortion created by lenses, Unity renders images on a distorted mesh, making the final images appear to human eyes un-distorted.
 
 # Development Environment
-## Supported Unity Versions
+## Unity Versions
 2017.3.0f1
 
 Other Unity versions may work, but they haven't been tested extensively by us. Please report any issue you may find to us. 
 
-## Supported Deployment Platforms
+## Deployment Platforms
 Android 6.0 or above.
 
-## Supported Development Platforms
+## Development Platforms
 Mac OS X is supported.
 Windows 10 should work, but it hasn't been tested extensively. Please report any issue you find on Windows 10.
 
