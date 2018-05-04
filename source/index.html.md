@@ -60,8 +60,8 @@ SDK comes with a few demos for developers to use as refferences. The following s
 [![IMAGE ALT TEXT](images/hello_world_marker_tracking.png)](http://v.youku.com/v_show/id_XMzU2OTM2ODkzMg==.html?spm=a2h3j.8428770.3416059.1)
 
 ## How to Config SlideInSDK Prefab
-[![IMAGE ALT TEXT](images/slide_in_sdk_prefab_tutorial.png)](http://v.youku.com/v_show/id_XMzU3NzY2OTI0NA==.html?spm=a2h3j.8428770.3416059.1)
-
+[![IMAGE ALT TEXT](images/slide_in_sdk_prefab_tutorial.png)](https://youtu.be/iReTtQUGo54)
+ 
 
 # API Documentation
 
